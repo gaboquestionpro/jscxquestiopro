@@ -11,7 +11,7 @@ var dept = document.getElementById("dep").value;
 var seg = document.getElementById("seg").value;
 
 //Obtiene info de sitio web
-function showdata(){
+$( document ).ready(function() (){
 
 	alert(mail, usrid, dept, seg);  
 }
