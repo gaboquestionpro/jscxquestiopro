@@ -4,19 +4,6 @@ var SvID1 = ""; //ID de encuesta de validación de usuario.
 var SvID2 = ""; //ID de encuesta de validación de respuesta.
 var APIKey = "f0b19738-c8a4-4a02-aee7-29b0a08cba1e"; //Llave API
 
-//Variables externas desde sitio web
-var mail = document.getElementById("mail").value; 
-var usrid = document.getElementById("IDusr").value;
-var dept = document.getElementById("dep").value;
-var seg = document.getElementById("seg").value;
-
-//Obtiene info de sitio web
-$( document ).ready(function() (){
-
-	alert(mail, usrid, dept, seg);  
-}
-
-
 setTimeout(function(){ 
 	$(footerElem).hide();
    $(".take-survey-title").hide();
