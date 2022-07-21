@@ -7,7 +7,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 var footerElem = ".custom-footer-wrapper";
 var SvID1 = ""; //ID de encuesta de validación de usuario.
 var SvID2 = ""; //ID de encuesta de validación de respuesta.
-var APIKey = "f0b19738-c8a4-4a02-aee7-29b0a08cba1e"; //Llave API
+var APIKey = "f0b19738-c8a4-4a02-aee7-29b0a08cba1e"; //Llave API ---- Encriptar
 
 setTimeout(function(){ 
 	$(footerElem).hide();
@@ -21,11 +21,12 @@ setTimeout(function(){
 
 
 //Busca el elemento en el sitio
+
 function EvalUserSecure(){
 	var checkUserID = $("#Check_ID").text();
 	CheckTrackVal(checkUserID, 0, "");
 }
-console.log("idEncontrado")
+console.log("idEncontrado");
 
 function CheckTrackVal(checkID, trackCheck, segmTxt){
 	var track = trackCheck; track++;
@@ -97,14 +98,4 @@ function CreateAlert(){
 		$("#AlertUser").fadeOut();
 	}, 5000);
 }
-
-
-
-
-
-
-
-
-
-
 
