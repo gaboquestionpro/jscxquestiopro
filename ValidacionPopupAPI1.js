@@ -19,11 +19,13 @@ setTimeout(function(){
 	EvalUserSecure();
 }, 500);
 
+
+//Busca el elemento en el sitio
 function EvalUserSecure(){
 	var checkUserID = $("#Check_ID").text();
 	CheckTrackVal(checkUserID, 0, "");
 }
-
+console.log("idEncontrado")
 
 function CheckTrackVal(checkID, trackCheck, segmTxt){
 	var track = trackCheck; track++;
