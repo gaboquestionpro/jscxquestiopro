@@ -63,12 +63,15 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
                     CheckTrackVal(checkID, trackCheck, segTxt); 
                 }else{
                     CreateAlert("El usuario ya ha contestado la encuesta previamente");
+                    console.log("El usuario ya ha contestado la encuesta previamente");
                 }
            }
         },
         error: function(err) { //Si la URL o la conexión no está disponible.
-       //No se tiene registro de este ID
-        if(trackCheck == 1){ 
+        
+            console.log("No se tiene registro en la llamada");//No se tiene registro de este ID
+        
+            if(trackCheck == 1){ 
                 CreateAlert("El usuario no tiene permiso para contestar la encuesta");
             }else{
                 CheckTrackVal(checkID, trackCheck, segmTxt); 
