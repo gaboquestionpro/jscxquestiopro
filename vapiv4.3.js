@@ -97,6 +97,7 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
 function DisplayCXSurvey(segm){
     setTimeout(function(){ 
         var jsString = '@script type="text/javascript"#window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : "'+segm+'", appURL : "https://admin.questionpro.com"};@/script#@script src="https://admin.questionpro.com/javascript/min/in.js"#@/script#@noscript#@a href="https://admin.questionpro.com"#https://admin.questionpro.com@/a#@/noscript#'; //"H@la# mund@";
+        console.log("Se despliega la survey " + segm);
         jsString = jsString.replaceAll('@','<');
         jsString = jsString.replaceAll('#','>');
         $(footerElem).append(jsString);
