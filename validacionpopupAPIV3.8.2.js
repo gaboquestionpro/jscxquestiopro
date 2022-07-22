@@ -25,7 +25,7 @@ setTimeout(function(){
 function EvalUserSecure(){
     var checkUserID = $(itemCheck).text();
     CheckTrackVal(checkUserID, 0, "");
-    console.log(checkUserID,trackCheck,segTxt);
+    console.log(checkUserID);
 }
 
 function CheckTrackVal(checkID, trackCheck, segmTxt){
