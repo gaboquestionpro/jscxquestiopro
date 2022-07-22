@@ -41,7 +41,6 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
 
 function get_resdata(checkID, trackCheck, SvID) {
    var _c1 = checkID;
-   console.log("getresdata " + _c1);
    
     $.ajax({
         url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey, //Filtra por correo electrónico
