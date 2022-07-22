@@ -62,16 +62,14 @@ function get_resdata(checkID, trackCheck, SvID) {
                     CheckTrackVal(checkID, trackCheck, segTxt); 
                     console.log(segTxt);
                 }else{
-                    CreateAlert("El usuario ya ha contestado la encuesta previamente");
                     console.log("El usuario ya ha contestado la encuesta previamente");
                 }
-           }
-        },
+           } else {
 
-        error: function(_XMLHttpRequest, _textStatus, _errorThrown) { //En caso de no encontrar registro envía a CheckTrackVal por tercera vez
-            console.log("some error");
-            console.log(segTxt);
-         }
+            console.log("No hay respuesta, se muestra pop up del segmento" + segTxt);
+
+           }
+        }
        
     });
 };
