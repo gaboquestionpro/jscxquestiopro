@@ -34,7 +34,7 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
     switch(track) {
       case 1: get_clidata(checkID, track, SvID1, segmTxt); break; //Primero Se verifica si existe el ususario en el registro de clientes
       //case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Segundo Se valida si no hay respuesta previa - 404
-      case 2: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
+      case 2: DisplayCXSurvey(segmTxt); console.log("Displaysurvey"); break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
 }
