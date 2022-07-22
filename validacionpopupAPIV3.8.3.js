@@ -32,8 +32,8 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
     var track = trackCheck; track++;
 
     switch(track) {
-      case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Se verifica si existe el ususario en el registro de clientes
-      //case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Se valida si no hay respuesta previa
+      case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Primero Se verifica si existe el ususario en el registro de clientes
+      case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Segundo Se valida si no hay respuesta previa - 404
       case 2: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
@@ -66,18 +66,20 @@ function get_resdata(checkID, trackCheck, SvID) {
                     console.log("El usuario ya ha contestado la encuesta previamente");
                 }
            }
-        }
-        /*error: function(err) { //Si la URL o la conexión no está disponible.
-        
-            if(trackCheck == 1){ 
-                CreateAlert("El usuario no tiene permiso para contestar la encuesta");
-                
-            }else{
-                CheckTrackVal(checkID, trackCheck, segmTxt); 
+        },
+
+        //Detecta error
+
+        error:function (xhr, ajaxOptions, thrownError){
+            if(xhr.status==404) {
+                alert(thrownError + "no hay respuesta");
+                console.log(checkID, trackCheck, segmTxt);
+                //CheckTrackVal(checkID, trackCheck, segmTxt);
+
             }
-           //console.log("Error de llamada API o conexión fallida."); 
-           //CreateAlert("Ocurrió un error al consultar la API, directamente en el track " + trackCheck + ".");
-        } */
+        }
+
+        
     });
 };
 
