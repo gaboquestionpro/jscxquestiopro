@@ -30,7 +30,7 @@ function EvalUserSecure(){
 
 function CheckTrackVal(checkID, trackCheck, segmTxt){
     var track = trackCheck; track++;
-    debugger
+
     switch(track) {
       case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Se verifica si existe el ususario en el registro de clientes
       case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Se valida si no hay respuesta previa
@@ -41,9 +41,10 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
 
 function get_resdata(checkID, trackCheck, SvID, segmTxt) {
    var _c1 = checkID;
+   console.log("getdatamail" + _c1);
    debugger
     $.ajax({
-        url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID+ "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey,
+        url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey,
         type: "get",
         contentType: 'application/json',
         crossDomain:true,
