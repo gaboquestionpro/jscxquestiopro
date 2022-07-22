@@ -72,6 +72,7 @@ function get_resdata(checkID, trackCheck, SvID) {
         
             if(trackCheck == 1){ 
                 CreateAlert("El usuario no tiene permiso para contestar la encuesta");
+                
             }else{
                 CheckTrackVal(checkID, trackCheck, segmTxt); 
             }
