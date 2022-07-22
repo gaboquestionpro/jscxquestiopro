@@ -57,20 +57,18 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
             console.log(response_count);
 
            if(response_count > 0) //Se tiene registro de este ID
-               console.log("El usuario ya ha contestado la encuesta previamente");
            {
                 if(trackCheck == 1){ 
-                    var segTxt = _responses[0]['customVariables']['custom2']; //Obtenemos el código de segmento alojado en la c2
+                    var segTxt = _responses[0]['customVariables']['custom3']; //Obtenemos el código de segmento alojado en la c2
                     CheckTrackVal(checkID, trackCheck, segTxt); 
+                    console.log(checkID + " "+ trackCheck + " " + segTxt);
                 }else{
                     CreateAlert("El usuario ya ha contestado la encuesta previamente");
-                    
+                    console.log("El usuario ya ha contestado la encuesta previamente");
                 }
            }
-        },
-        error: function(err) { //Si la URL o la conexión no está disponible.
-        
-            console.log("No se tiene registro en la llamada");//No se tiene registro de este ID
+        }
+        /*error: function(err) { //Si la URL o la conexión no está disponible.
         
             if(trackCheck == 1){ 
                 CreateAlert("El usuario no tiene permiso para contestar la encuesta");
@@ -79,7 +77,7 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
             }
            //console.log("Error de llamada API o conexión fallida."); 
            //CreateAlert("Ocurrió un error al consultar la API, directamente en el track " + trackCheck + ".");
-        } 
+        } */
     });
 };
 
