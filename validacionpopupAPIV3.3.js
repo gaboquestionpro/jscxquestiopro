@@ -41,7 +41,7 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
 
 function get_resdata(checkID, trackCheck, SvID, segmTxt) {
    var _c1 = checkID;
-   console.log("getdatamail" + _c1);
+   console.log("getdatamail " + _c1);
    
     $.ajax({
         url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey,
@@ -50,9 +50,12 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
         crossDomain:true,
         dataType: "json",
         success: function(data) { //Si la petición fue correcta.
-            debugger
            var _responses = data['response']; 
            var response_count = _responses.length;
+           
+           //Debug
+            console.log(response_count);
+
            if(response_count > 0) //Se tiene registro de este ID
            {
                 if(trackCheck == 1){ 
@@ -64,14 +67,13 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
            }
         },
         error: function(err) { //Si la URL o la conexión no está disponible.
-            
+       //No se tiene registro de este ID
         if(trackCheck == 1){ 
                 CreateAlert("El usuario no tiene permiso para contestar la encuesta");
             }else{
                 CheckTrackVal(checkID, trackCheck, segmTxt); 
             }
            //console.log("Error de llamada API o conexión fallida."); 
-            console.log("Error en la consulta API");
            //CreateAlert("Ocurrió un error al consultar la API, directamente en el track " + trackCheck + ".");
         } 
     });
