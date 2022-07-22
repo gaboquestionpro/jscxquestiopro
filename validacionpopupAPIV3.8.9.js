@@ -32,9 +32,9 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
     var track = trackCheck; track++;
 
     switch(track) {
-      case 1: get_resdata(checkID, track, SvID1, segmTxt); console.log("1 - Existe en la BD " + track ); break; //Primero Se verifica si existe el ususario en el registro de clientes
-      case 2: get_resdata(checkID, track, SvID2, segmTxt); console.log("2 - No hay respuesta Previa " + track); break; //Segundo Se valida si no hay respuesta previa - 404
-      case 3: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
+      case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Primero Se verifica si existe el ususario en el registro de clientes
+      case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Segundo Se valida si no hay respuesta previa - 404
+      case 2: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
 }
@@ -51,37 +51,26 @@ function get_resdata(checkID, trackCheck, SvID) {
         success: function(data) { //Si la petición fue correcta.
            var _responses = data['response']; 
            var response_count = _responses.length;
+           
+           //Debug
+            console.log(response_count);
 
            if(response_count > 0) //Se tiene registro de este ID
            {
                 if(trackCheck == 1){ 
                     var segTxt = _responses[0]['customVariables']['custom2']; //Obtenemos el código de segmento alojado en la c2
-                    CheckTrackVal(checkID, trackCheck, segTxt);                 
+                    CheckTrackVal(checkID, trackCheck, segTxt); 
+                    console.log(segTxt);
                 }else{
                     CreateAlert("El usuario ya ha contestado la encuesta previamente");
                     console.log("El usuario ya ha contestado la encuesta previamente");
                 }
            }
         },
-        error: function (jqXHR, exception) {
-            var msg = '';
-            if (jqXHR.status === 0) {
-                msg = 'Not connect.\n Verify Network.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-            }
-            $('#post').html(msg);
-        }
+
+        error: function(_XMLHttpRequest, _textStatus, _errorThrown) {
+            console.log("some error");
+         }
        
     });
 };
