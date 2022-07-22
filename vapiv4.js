@@ -25,52 +25,52 @@ setTimeout(function(){
 function EvalUserSecure(){
     var checkUserID = $(itemCheck).text();
     CheckTrackVal(checkUserID, 0, "");
+    console.log(checkUserID);
 }
 
 function CheckTrackVal(checkID, trackCheck, segmTxt){
     var track = trackCheck; track++;
-    debugger
+
     switch(track) {
-      case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Se verifica si existe el ususario en el registro de clientes
-      case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Se valida si no hay respuesta previa
+      case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Primero Se verifica si existe el ususario en el registro de clientes
+      case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Segundo Se valida si no hay respuesta previa - 404
       case 3: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
 }
 
-function get_resdata(checkID, trackCheck, SvID, segmTxt) {
+function get_resdata(checkID, trackCheck, SvID) {
    var _c1 = checkID;
-   debugger
+   
     $.ajax({
-        url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID+ "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey,
+        url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey, //Filtra por correo electrónico
         type: "get",
         contentType: 'application/json',
         crossDomain:true,
         dataType: "json",
         success: function(data) { //Si la petición fue correcta.
-            debugger
            var _responses = data['response']; 
            var response_count = _responses.length;
+           
+           //Debug
+            console.log(response_count);
+
            if(response_count > 0) //Se tiene registro de este ID
-           {
-                if(trackCheck == 1){ 
-                    var segTxt = _responses[0]['customVariables']['custom2']; //Obtenemos el código de segmento alojado en la c2
-                    CheckTrackVal(checkID, trackCheck, segTxt); 
-                }else{
-                    CreateAlert("El usuario ya ha contestado la encuesta previamente");
-                }
+            {
+                    if(trackCheck == 1){ 
+                        var segTxt = _responses[0]['customVariables']['custom2']; //Obtenemos el código de segmento alojado en la c2
+                        CheckTrackVal(checkID, trackCheck, segTxt); 
+                        console.log(segTxt);
+                    }else{
+                        console.log("El usuario ya ha contestado la encuesta previamente");
+                    }
+            } else {
+
+            console.log("No hay respuesta, se muestra pop up del segmento" + segTxt);
+
            }
-        },
-        error: function(err) { //Si la URL o la conexión no está disponible.
-            debugger //No se tiene registro de este ID
-        if(trackCheck == 1){ 
-                CreateAlert("El usuario no tiene permiso para contestar la encuesta");
-            }else{
-                CheckTrackVal(checkID, trackCheck, segmTxt); 
-            }
-           //console.log("Error de llamada API o conexión fallida."); 
-           //CreateAlert("Ocurrió un error al consultar la API, directamente en el track " + trackCheck + ".");
-        } 
+        }
+       
     });
 };
 
