@@ -42,7 +42,7 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
 function get_resdata(checkID, trackCheck, SvID, segmTxt) {
    var _c1 = checkID;
    console.log("getdatamail" + _c1);
-   debugger
+   
     $.ajax({
         url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey,
         type: "get",
@@ -64,7 +64,7 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
            }
         },
         error: function(err) { //Si la URL o la conexión no está disponible.
-            debugger //No se tiene registro de este ID
+            console.log("Error en la consulta API");
         if(trackCheck == 1){ 
                 CreateAlert("El usuario no tiene permiso para contestar la encuesta");
             }else{
