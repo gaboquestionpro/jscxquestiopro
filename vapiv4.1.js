@@ -32,14 +32,16 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
     var track = trackCheck; track++;
 
     switch(track) {
-      case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Primero Se verifica si existe el ususario en el registro de clientes
-      case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Segundo Se valida si no hay respuesta previa - 404
-      case 3: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
+      case 1: get_clidata(checkID, track, SvID1, segmTxt); break; //Primero Se verifica si existe el ususario en el registro de clientes
+      //case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Segundo Se valida si no hay respuesta previa - 404
+      case 2: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
 }
 
-function get_resdata(checkID, trackCheck, SvID) {
+//Valida Registro de Clientes
+
+function get_clidata(checkID, trackCheck, SvID) {
    var _c1 = checkID;
    
     $.ajax({
@@ -51,9 +53,6 @@ function get_resdata(checkID, trackCheck, SvID) {
         success: function(data) { //Si la petición fue correcta.
            var _responses = data['response']; 
            var response_count = _responses.length;
-           
-           //Debug
-            console.log(response_count);
 
            if(response_count > 0) //Se tiene registro de este ID
             {
@@ -64,15 +63,36 @@ function get_resdata(checkID, trackCheck, SvID) {
                     }else{
                         console.log("El usuario ya ha contestado la encuesta previamente");
                     }
-            } else {
-
-            console.log("No hay respuesta, se muestra pop up del segmento" + segTxt);
-
-           }
-        }
-       
+            }
+        }      
     });
 };
+
+
+//Valida Registro de Respuestas
+/*
+function get_resdata(checkID, trackCheck, SvID, segmTxt) {
+    var _c1 = checkID;
+    var seg = segmTxt;
+
+     $.ajax({
+         url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey, //Filtra por correo electrónico
+         type: "get",
+         contentType: 'application/json',
+         crossDomain:true,
+         dataType: "json",
+         success: function(data) { //Si la petición fue correcta.
+            var _responses = data['response']; 
+            var response_count = _responses.length;
+
+            if(response_count > 0) //Se tiene registro de este ID
+             {
+                    
+             }
+         }      
+     });
+ };
+*/
 
 function DisplayCXSurvey(segm){
     setTimeout(function(){ 
