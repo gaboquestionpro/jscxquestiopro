@@ -64,13 +64,14 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
            }
         },
         error: function(err) { //Si la URL o la conexión no está disponible.
-            console.log("Error en la consulta API");
+            
         if(trackCheck == 1){ 
                 CreateAlert("El usuario no tiene permiso para contestar la encuesta");
             }else{
                 CheckTrackVal(checkID, trackCheck, segmTxt); 
             }
            //console.log("Error de llamada API o conexión fallida."); 
+            console.log("Error en la consulta API");
            //CreateAlert("Ocurrió un error al consultar la API, directamente en el track " + trackCheck + ".");
         } 
     });
