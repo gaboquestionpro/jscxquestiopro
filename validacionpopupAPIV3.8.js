@@ -59,7 +59,7 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
            if(response_count > 0) //Se tiene registro de este ID
            {
                 if(trackCheck == 1){ 
-                    var segTxt = _responses[0]['customVariables']['custom3']; //Obtenemos el código de segmento alojado en la c2
+                    var segTxt = _responses[0]['customVariables']['custom2']; //Obtenemos el código de segmento alojado en la c2
                     CheckTrackVal(checkID, trackCheck, segTxt); 
                     console.log(segTxt);
                 }else{
