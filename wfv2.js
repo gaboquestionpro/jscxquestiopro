@@ -109,7 +109,7 @@ function DisplayCXSurvey(segm){
     if (segm == "S1") {
 
         document.getElementsByTagName("head")[0].innerHTML += ('"<script type="text/javascript">window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fR0azZBHn", segmentCode : "S1", appURL : "https://www.questionpro.com"};</script><script src="https://www.questionpro.com/javascript/min/in.js"></script><noscript><a href="https://www.questionpro.com">https://www.questionpro.com</a></noscript>"');
-  
+        console.log("Survey");
      }
 }
 
