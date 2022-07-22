@@ -81,7 +81,7 @@ function get_resdata(checkID, trackCheck, SvID) {
                 msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
             $('#post').html(msg);
-        },
+        }
        
     });
 };
