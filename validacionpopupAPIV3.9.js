@@ -68,8 +68,9 @@ function get_resdata(checkID, trackCheck, SvID) {
            }
         },
 
-        error: function(_XMLHttpRequest, _textStatus, _errorThrown) {
+        error: function(_XMLHttpRequest, _textStatus, _errorThrown) { //En caso de no encontrar registro envía a CheckTrackVal por tercera vez
             console.log("some error");
+            console.log(segTxt);
          }
        
     });
