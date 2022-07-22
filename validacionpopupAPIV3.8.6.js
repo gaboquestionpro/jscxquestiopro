@@ -51,9 +51,6 @@ function get_resdata(checkID, trackCheck, SvID) {
         success: function(data) { //Si la petición fue correcta.
            var _responses = data['response']; 
            var response_count = _responses.length;
-           
-           //Debug
-            console.log(response_count);
 
            if(response_count > 0) //Se tiene registro de este ID
            {
