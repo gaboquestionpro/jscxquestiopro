@@ -32,8 +32,8 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
     var track = trackCheck; track++;
 
     switch(track) {
-      case 1: get_resdata(checkID, track, SvID1, segmTxt); break; //Primero Se verifica si existe el ususario en el registro de clientes
-      case 2: get_resdata(checkID, track, SvID2, segmTxt); break; //Segundo Se valida si no hay respuesta previa - 404
+      case 1: get_resdata(checkID, track, SvID1, segmTxt); console.log("Se detectó información" + track); break;  //Primero Se verifica si existe el ususario en el registro de clientes
+      case 2: get_resdata(checkID, track, SvID2, segmTxt); console.log("Se hace check 2" + track); break; //Segundo Se valida si no hay respuesta previa - 404
       case 2: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
@@ -77,8 +77,11 @@ function get_resdata(checkID, trackCheck, SvID) {
 function DisplayCXSurvey(segm){
     setTimeout(function(){ 
         var jsString = '@script type="text/javascript"#window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : "'+segm+'", appURL : "https://admin.questionpro.com"};@/script#@script src="https://admin.questionpro.com/javascript/min/in.js"#@/script#@noscript#@a href="https://admin.questionpro.com"#https://admin.questionpro.com@/a#@/noscript#'; //"H@la# mund@";
+        
         jsString = jsString.replaceAll('@','<');
         jsString = jsString.replaceAll('#','>');
+        console.log("Se despliega script");
+        console.log(jsString);
         $(footerElem).append(jsString);
     }, 500);
 }
