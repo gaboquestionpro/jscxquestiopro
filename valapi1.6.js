@@ -64,12 +64,21 @@ function get_resdata(checkID, trackCheck, SvID) {
                 }else{
                     console.log("El usuario ya ha contestado la encuesta previamente");
                 }
-           } else {
-
-            console.log("No hay respuesta, se muestra pop up del segmento" + segTxt);
-
            }
-        }
+
+        }, //Termina Success
+
+            //Error Handler
+
+            error: function(jqXHR,error, errorThrown) {  
+                if(jqXHR.status&&jqXHR.status==400){
+                     alert(jqXHR.responseText); 
+                }else{
+                    alert("Something went wrong");
+                }
+           }
+
+
        
     });
 };
