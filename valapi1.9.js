@@ -43,7 +43,7 @@ function get_resdata(checkID, trackCheck, SvID) {
    var _c1 = checkID;
    
     $.ajax({
-        url: "https://cors-proxy.htmldriven.com/?url=https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey, //Filtra por correo electrónico
+        url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey, //Filtra por correo electrónico
         type: "get",
         contentType: 'application/json',
         crossDomain:true,
