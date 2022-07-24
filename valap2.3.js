@@ -41,9 +41,7 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
 
 function get_resdata(checkID, trackCheck, SvID, segmTxt) {
    var _c1 = checkID;
-   var segmTXTSurvey = segmTxt;
-   console.log(segmTXTSurvey);
-
+   var segmse = segmTxt;
     $.ajax({
         url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey, //Filtra por correo electrónico
         type: "get",
@@ -67,16 +65,22 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
                 }else{
                     console.log("El usuario ya ha contestado la encuesta previamente");
                 }
-           }
+           } 
 
         }, //Termina Success           
 
-            error: function(segmTXTSurvey) {  //Sin registros envía a check 3 - No ha contestado la encuesta
-                
-                DisplayCXSurvey(segmTXTSurvey);
+            error: function(err) {  //Sin registros envía a check 3 - No ha contestado la encuesta
+                console.log("No se encontraron registros");
+                noresulthandler();
            }
        
     });
+
+    function noresulthandler (){
+        DisplayCXSurvey(segmse)
+    }
+
+
 };
 
 function DisplayCXSurvey(segm){
