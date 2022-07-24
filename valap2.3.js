@@ -89,7 +89,7 @@ function DisplayCXSurvey(segm){
         
         jsString = jsString.replaceAll('@','<');
         jsString = jsString.replaceAll('#','>');
-        console.log("Se despliega script" + segm);
+        console.log("Se despliega pop up para el segmento: " + segm);
         console.log(jsString);
         $(footerElem).append(jsString);
     }, 500);
