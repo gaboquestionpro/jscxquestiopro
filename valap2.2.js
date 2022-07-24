@@ -42,12 +42,15 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
 function get_resdata(checkID, trackCheck, SvID, segmTxt) {
    var _c1 = checkID;
    var segmTXTSurvey = segmTxt;
+   console.log(segmTXTSurvey);
+
     $.ajax({
         url: "https://api.questionpro.com/a/api/v2/surveys/" + SvID + "/responses/filter?custom1="+ _c1 +"&apiKey=" + APIKey, //Filtra por correo electrónico
         type: "get",
         contentType: 'application/json',
         crossDomain:true,
         dataType: "json",
+        async: false,
         success: function(data) { //Si la petición fue correcta.
            var _responses = data['response']; 
            var response_count = _responses.length;
@@ -82,7 +85,7 @@ function DisplayCXSurvey(segm){
         
         jsString = jsString.replaceAll('@','<');
         jsString = jsString.replaceAll('#','>');
-        console.log("Se despliega script");
+        console.log("Se despliega script" + segm);
         console.log(jsString);
         $(footerElem).append(jsString);
     }, 500);
