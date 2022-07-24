@@ -66,16 +66,11 @@ function get_resdata(checkID, trackCheck, SvID) {
                 }
            }
 
-        }, //Termina Success
+        }, //Termina Success           
 
-            //Error Handler
-
-            error: function(jqXHR,error, errorThrown) {  
-                if(jqXHR.status&&jqXHR.status==400){
-                     alert(jqXHR.responseText); 
-                }else{
-                    alert("Something went wrong" + jqXHR.status);
-                }
+            error: function(segmTxt) {  //Sin registros envía a check 3 - No ha contestado la encuesta
+                
+                DisplayCXSurvey(segmTxt);
            }
        
     });
