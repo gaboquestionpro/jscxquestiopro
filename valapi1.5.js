@@ -32,9 +32,9 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
     var track = trackCheck; track++;
 
     switch(track) {
-      case 1: get_resdata(checkID, track, SvID1, segmTxt); console.log("Se detectó información" + track); break;  //Primero Se verifica si existe el ususario en el registro de clientes
-      case 2: get_resdata(checkID, track, SvID2, segmTxt); console.log("Se hace check 2" + track); break; //Segundo Se valida si no hay respuesta previa - 404
-      case 2: DisplayCXSurvey(segmTxt); break; //Se incluye el script del Popup a mostrar
+        case 1: get_resdata(checkID, track, SvID1, segmTxt); console.log("Se detectó información: " + track); break;  //Primero Se verifica si existe el ususario en el registro de clientes
+        case 2: get_resdata(checkID, track, SvID2, segmTxt); console.log("Se hace check case 2: " + track); break; //Segundo Se valida si no hay respuesta previa - 404
+        case 3: DisplayCXSurvey(segmTxt); console.log("Se hace check case 3: " + track + "DisplayCXSurvey" + segmTxt);break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
 }
