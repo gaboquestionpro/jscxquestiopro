@@ -64,19 +64,12 @@ function get_resdata(checkID, trackCheck, SvID) {
                 }else{
                     console.log("El usuario ya ha contestado la encuesta previamente");
                 }
-           }else{ //No se tiene registro de este ID
-           
-            if(trackCheck == 1){ 
-                 CreateAlert();
-             }else{
-                 CheckTrackVal(checkID, trackCheck, segmTxt); 
-             }
+           } else {
+
+            console.log("No hay respuesta, se muestra pop up del segmento" + segTxt);
+
+           }
         }
-     },
-     
-     error: function (request, status, error) {
-        alert(request.responseText);
-     } 
        
     });
 };
