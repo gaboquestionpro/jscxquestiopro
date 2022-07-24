@@ -85,13 +85,13 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
 
 function DisplayCXSurvey(segm){
     setTimeout(function(){ 
-        var jsString = '@script type="text/javascript"#window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : "'+segm+'", appURL : "https://www.questionpro.com"};@/script#@script src="https://www.questionpro.com/javascript/min/in.js"#@/script#@noscript#@a href="https://www.questionpro.com"#https://www.questionpro.com@/a#@/noscript#'; //"H@la# mund@";
+        var jsString = '@script type="text/javascript"#window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : "'+segm+'", appURL : "https://admin.questionpro.com"};@/script#@script src="https://admin.questionpro.com/javascript/min/in.js"#@/script#@noscript#@a href="https://admin.questionpro.com"#https://admin.questionpro.com@/a#@/noscript#'; //"H@la# mund@";
         
         jsString = jsString.replaceAll('@','<');
         jsString = jsString.replaceAll('#','>');
         console.log("Se despliega pop up para el segmento: " + segm);
         console.log(jsString);
-        $(footerElem).append(jsString);
+        $('head').append(jsString);
     }, 500);
 }
 
