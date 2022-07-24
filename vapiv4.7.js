@@ -86,7 +86,9 @@ function DisplayCXSurvey(segm){
         jsString = jsString.replaceAll('@','<');
         jsString = jsString.replaceAll('#','>');
         console.log("Se despliega la survey " + jsString);
-        $(footerElem).append(jsString);
+        document.getElementsByTagName('head')[0].appendChild(jsString);
+        
+        //$(footerElem).append(jsString);
     }, 500);
 }
 
