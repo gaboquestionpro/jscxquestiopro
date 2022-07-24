@@ -74,7 +74,7 @@ function get_resdata(checkID, trackCheck, SvID) {
                 if(jqXHR.status&&jqXHR.status==400){
                      alert(jqXHR.responseText); 
                 }else{
-                    alert("Something went wrong");
+                    alert("Something went wrong" + jqXHR.status);
                 }
            }
 
