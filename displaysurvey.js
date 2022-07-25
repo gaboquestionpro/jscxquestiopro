@@ -103,9 +103,9 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
 };
 
 function DisplayCXSurvey(segm){
-    setTimeout(function(){ 
+        console.log("Mostrando pop up del segmento: " + segm);
         window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : '"' + segm + '"', appURL : "https://admin.questionpro.com"};
-    }, 1500);
+    
 }
 
 function CreateAlert(msg){
