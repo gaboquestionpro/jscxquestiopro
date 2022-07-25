@@ -5,6 +5,11 @@ script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+var qpimport = document.createElement('script');
+script.src = 'https://admin.questionpro.com/javascript/min/in.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(qpimport);
+
 var footerElem = ".custom-footer-wrapper";
 var alertContent = "#ContenAlert";
 var itemCheck = "#Check_ID";
@@ -91,8 +96,8 @@ function DisplayCXSurvey(segm){
         jsString = jsString.replaceAll('#','>');
         console.log("Se despliega pop up para el segmento: " + segm);
         console.log(jsString);
-        $('head').append(jsString);
-    }, 500);
+        $('footer:last').append(jsString);
+    }, 1500);
 }
 
 function CreateAlert(msg){
