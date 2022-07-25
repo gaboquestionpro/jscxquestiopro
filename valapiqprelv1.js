@@ -34,7 +34,7 @@ function CheckTrackVal(checkID, trackCheck, segmTxt){
     switch(track) {
         case 1: get_resdata(checkID, track, SvID1, segmTxt); console.log("Se detectó información: " + track); break;  //Primero Se verifica si existe el ususario en el registro de clientes
         case 2: get_resdata(checkID, track, SvID2, segmTxt); console.log("Se hace check case 2: " + track); break; //Segundo Se valida si no hay respuesta previa - 404
-        case 3: DisplayCXSurvey(segmTxt); console.log("Se hace check case 3: " + track + "DisplayCXSurvey" + segmTxt);break; //Se incluye el script del Popup a mostrar
+        //case 3: DisplayCXSurvey(segmTxt); console.log("Se hace check case 3: " + track + "DisplayCXSurvey" + segmTxt);break; //Se incluye el script del Popup a mostrar
       default:CreateAlert("Ha ocurrido un error al procesar la información al inicio del procesamiento");
     }
 }
@@ -67,7 +67,7 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
                 }
            } 
 
-        }, //Termina Success           
+        },          
 
             error: function(err) {  //Sin registros envía a check 3 - No ha contestado la encuesta
                 
@@ -101,7 +101,7 @@ function DisplayCXSurvey(segm){
         console.log("Se despliega pop up para el segmento: " + segm);
         console.log(jsString);
         $('footer:last').append(jsString);
-    }, 1500);
+    }, 100);
 }
 
 function CreateAlert(msg){
