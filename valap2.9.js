@@ -5,11 +5,6 @@ script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
-var qpimport = document.createElement('script');
-script.src = 'https://admin.questionpro.com/javascript/min/in.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(qpimport);
-
 var footerElem = ".custom-footer-wrapper";
 var alertContent = "#ContenAlert";
 var itemCheck = "#Check_ID";
@@ -98,8 +93,9 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
 
 function DisplayCXSurvey(segm){
     setTimeout(function(){ 
-        var jsString = '@script type="text/javascript"#window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : "'+segm+'", appURL : "https://admin.questionpro.com"};@/script#@script src="https://admin.questionpro.com/javascript/min/in.js"#@/script#@noscript#@a href="https://admin.questionpro.com"#https://admin.questionpro.com@/a#@/noscript#'; //"H@la# mund@";
-        
+        // Original - var jsString = '@script type="text/javascript"#window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : "'+segm+'", appURL : "https://admin.questionpro.com"};@/script#@script src="https://admin.questionpro.com/javascript/min/in.js"#@/script#@noscript#@a href="https://admin.questionpro.com"#https://admin.questionpro.com@/a#@/noscript#'; //"H@la# mund@";
+        var jsString = '@script type="text/javascript"#window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fR0azZBHn", segmentCode : "'+segm+'", appURL : "https://www.questionpro.com"};@/script#@script src="https://www.questionpro.com/javascript/min/in.js"#@/script#@noscript#@a href="https://www.questionpro.com"#https://www.questionpro.com@/a#@/noscript#'; //"H@la# mund@";
+
         jsString = jsString.replaceAll('@','<');
         jsString = jsString.replaceAll('#','>');
         console.log("Se despliega pop up para el segmento: " + segm);
