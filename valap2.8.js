@@ -75,8 +75,16 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
         }, //Termina Success           
 
             error: function(err) {  //Sin registros envía a check 3 - No ha contestado la encuesta
-                console.log("No se encontraron registros");
-                noresulthandler();
+                
+                if(segmse){
+
+                    console.log("Cliente sin respuesta");
+                    noresulthandler();
+
+                } else{
+                    console.log("No se encontraron registros de Cliente o Respuesta alguna");
+                }
+                
            }
        
     });
