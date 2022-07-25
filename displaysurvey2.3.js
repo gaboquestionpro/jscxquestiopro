@@ -7,11 +7,7 @@ script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
-//import qp
-var qpimport = document.createElement('script');
-script.src = 'https://admin.questionpro.com/javascript/min/in.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(qpimport);
+
 
 
 var footerElem = ".custom-footer-wrapper";
@@ -103,6 +99,13 @@ function get_resdata(checkID, trackCheck, SvID, segmTxt) {
 };
 
 function DisplayCXSurvey(segm){
+    
+        //import qp
+        var qpimport = document.createElement('script');
+        script.src = 'https://admin.questionpro.com/javascript/min/in.js';
+        script.type = 'text/javascript';
+        document.getElementsByTagName('head')[0].appendChild(qpimport);
+    
         console.log("Mostrando pop up del segmento: " + segm);
         window.QPROSurvey = {};window.QPROSurvey.settings = {inID : "fPUimZsN", segmentCode : segm, appURL : "https://admin.questionpro.com"};
         console.log(window.QPROSurvey);
